@@ -24,11 +24,29 @@ public class administratorMenuController extends userMainMenuController {
 	currgui2.addrequests(new ButtonrequestsListener());
 	currgui2.addcreatenewgroup(new ButtonCreateGroupListener());
 	currgui2.addcreatenewfile(new ButtoncreatenewfileListener());
-
+	currgui2.addDeletegroup(new ButtondeleteGroupListener());
 	currgui2.addlogout(new LogOutListener());
 
 	currgui2.addcreatenewfolder(new ButtoncreatenewfolderListener());
 	}
+	
+	private class ButtondeleteGroupListener implements ActionListener {
+
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			buttondeleteGroup();
+		}
+		
+	}
+	private void buttondeleteGroup() {
+		currgui2.close();
+		
+		deleteGroupGUI R= new deleteGroupGUI();
+		new deleteGroupController(R,this);
+		//R.setVisible(true);
+	}
+	
 	private class ButtoncreatenewfolderListener implements ActionListener {
 
 
@@ -100,7 +118,7 @@ private void buttoncreatenewfilePressed() {
 	private void buttonrequestsPressed() {
 		CurrGui.close();
 		requestsGUI R= new requestsGUI();
-		//new GroupsListController(R,this);
+		new requestController(R,this);
 	}
 	public administratorMenuGUI getAdminCon()
 	{
