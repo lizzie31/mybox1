@@ -49,6 +49,7 @@ public class fileMenuGui extends JFrame {
 	private String[] values = null;
 
 	private User user;
+	
 	private String FileName;
 
 
