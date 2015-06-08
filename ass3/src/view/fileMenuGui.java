@@ -4,11 +4,11 @@ import java.awt.EventQueue;
 
 
 
+
 import javax.swing.JFrame;
-
 import javax.swing.JList;
-
 import javax.swing.JPanel;
+
 
 
 
@@ -16,26 +16,27 @@ import java.awt.BorderLayout;
 
 
 
+
 import javax.swing.JLabel;
 
 
 
-import java.awt.Font;
 
+import java.awt.Font;
 import java.awt.event.ActionListener;
 
 
 
-import javax.swing.JButton;
 
+import javax.swing.JButton;
 import javax.swing.AbstractListModel;
+
 
 
 
 import Model.User;
 
 import java.awt.event.ActionEvent;
-
 import java.awt.SystemColor;
 
 public class fileMenuGui extends JFrame {
@@ -49,15 +50,16 @@ public class fileMenuGui extends JFrame {
 	private String[] values = null;
 
 	private User user;
+	
+	private String FileName;
+	JButton btnCancel_1=null;
 
 
 
 	public fileMenuGui(User u,String FileName) {
-
+		this.FileName=FileName;
 		this.user=u;
-
 		initialize();
-
 		this.setVisible(true);
 
 	}
@@ -72,12 +74,9 @@ public class fileMenuGui extends JFrame {
 
 	private void initialize() {
 
-		this.setBounds(300, 100,300,200);
-
+		this.setBounds(300, 50,300,200);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 		this.setSize(500,300);
-
 		this.setContentPane(getCreatePanel());
 
 		
@@ -95,31 +94,20 @@ public class fileMenuGui extends JFrame {
 		{
 
 			panel=new JPanel();
-
 			panel.setBackground(SystemColor.inactiveCaption);
-
 			panel.setLayout(null);
-
-			
+	
 
 			JButton btnRead = new JButton("read");
-
 			btnRead.setBounds(26, 56, 137, 23);
-
 			panel.add(btnRead);
 
 			
-
 			JButton btnUpdate = new JButton("set charecters");
-
 			btnUpdate.setBounds(26, 108, 137, 23);
-
 			panel.add(btnUpdate);
 
-			
-
 			JButton btnNewButton = new JButton("delete");
-
 			btnNewButton.addActionListener(new ActionListener() {
 
 				public void actionPerformed(ActionEvent e) {
@@ -134,45 +122,26 @@ public class fileMenuGui extends JFrame {
 
 			
 
-			JLabel lblWhatIsThe = new JLabel("what is the action you want to do with the file:");
-
+			JLabel lblWhatIsThe = new JLabel("what is the action you want to do with the file:"+FileName);
 			lblWhatIsThe.setFont(new Font("Arial Black", Font.PLAIN, 12));
-
-			lblWhatIsThe.setBounds(44, 11, 358, 34);
-
+			lblWhatIsThe.setBounds(28, 11, 411, 34);
 			panel.add(lblWhatIsThe);
 
-			
-
 			JButton btnNewButton_1 = new JButton("set permission");
-
 			btnNewButton_1.setBounds(184, 108, 137, 23);
-
 			panel.add(btnNewButton_1);
 
-			
-
 			JButton btnSetContent = new JButton("set content");
-
 			btnSetContent.setBounds(337, 56, 137, 23);
-
 			panel.add(btnSetContent);
 
 			
 
-			JButton btnCancel_1 = new JButton("cancel");
+			btnCancel_1 = new JButton("cancel");
 
 			btnCancel_1.setBounds(337, 108, 137, 23);
 
 			panel.add(btnCancel_1);
-
-			
-
-			JButton btnLogOut = new JButton("log Out");
-
-			btnLogOut.setBounds(385, 207, 89, 23);
-
-			panel.add(btnLogOut);
 
 		}
 
@@ -181,9 +150,7 @@ public class fileMenuGui extends JFrame {
 	}
 
 	public void addcancel(ActionListener l) {
-
-		btnCancel.addActionListener(l);
-
+		btnCancel_1.addActionListener(l);
 	}
 
 	public void close() {
@@ -193,6 +160,7 @@ public class fileMenuGui extends JFrame {
 		dispose();
 
 	}
+	
 
 }
 

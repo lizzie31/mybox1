@@ -47,11 +47,14 @@ public class administratorMenuGUI extends JFrame {
 	private JButton btnCreateNewFolder=null;
 	private JButton btnAddleaveAGroup=null;
 	private JButton btncratenewgroup=null;
+	private JButton btnLogOut=null;
 	private User user;
 	private JButton btnrequests = null;
 	private ArrayList<file> userfiles=null;
+	private JButton btnNewButton_2;
 	private int arraysize;
 	private String[] values;
+	private JButton deleteGroupButton=null;
 	JList list=null;
 	
 	public administratorMenuGUI(User user) {
@@ -84,7 +87,7 @@ public class administratorMenuGUI extends JFrame {
 		btnCreateNewFile.setBackground(UIManager.getColor("SplitPane.background"));
 		MainMenu.add(btnCreateNewFile);
 		
-		JButton btnLogOut = new JButton("log out");
+		btnLogOut = new JButton("log out");
 		btnLogOut.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnLogOut.setBackground(UIManager.getColor("SplitPane.background"));
 		btnLogOut.setBounds(307, 284, 89, 23);
@@ -137,12 +140,12 @@ MainMenu.setBackground(new Color(152, 251, 152));
 		btncratenewgroup.setBounds(338, 77, 101, 23);
 		MainMenu.add(btncratenewgroup);
 		
-		JButton btnNewButton_1 = new JButton("delete group");
-		btnNewButton_1.setBackground(UIManager.getColor("SplitPane.shadow"));
-		btnNewButton_1.setBounds(338, 109, 101, 23);
-		MainMenu.add(btnNewButton_1);
+		deleteGroupButton = new JButton("delete group");
+		deleteGroupButton.setBackground(UIManager.getColor("SplitPane.shadow"));
+		deleteGroupButton.setBounds(338, 109, 101, 23);
+		MainMenu.add(deleteGroupButton);
 		
-		JButton btnNewButton_2 = new JButton("edit group");
+		btnNewButton_2 = new JButton("edit group");
 		btnNewButton_2.setBackground(UIManager.getColor("SplitPane.shadow"));
 		btnNewButton_2.setBounds(338, 143, 101, 23);
 		MainMenu.add(btnNewButton_2);
@@ -154,6 +157,9 @@ MainMenu.setBackground(new Color(152, 251, 152));
 		}
 		return MainMenu;
 		
+	}
+	public void addDeletegroup(ActionListener l) {
+		deleteGroupButton.addActionListener(l);
 	}
 	public void addcreatenewgroup(ActionListener l) {
 		btncratenewgroup.addActionListener(l);
@@ -170,6 +176,9 @@ MainMenu.setBackground(new Color(152, 251, 152));
 	}
 	public void addleaveEntergruop(ActionListener l) {
 		btnAddleaveAGroup.addActionListener(l);
+	}
+	public void addlogout(ActionListener l) {
+		btnLogOut.addActionListener(l);
 	}
 	public void close() {
 		this.setVisible(false);

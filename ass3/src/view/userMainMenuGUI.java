@@ -107,163 +107,91 @@ import javax.swing.JCheckBox;
 import javax.swing.AbstractListModel;
 
 public class userMainMenuGUI extends JFrame {
-
-
-
 	private JPanel MainMenu;
-
 	private JTextField textField;
-
 	private JButton btnCreateNewFile=null;
-
 	private JButton btnShowgroups=null;
-
 	private JButton btnCreateNewFolder=null;
-
 	private JButton btnAddleaveAGroup=null;
-
 	private PopupMenu p = new PopupMenu();
-
 	private JButton open=null;
-
-	private JButton btnLogOut=null;
-
-	//private ArrayList<String> files=new ArrayList<String>();
-
+	private JButton btnLogOut=null;	//private ArrayList<String> files=new ArrayList<String>();
 	private String filePath = "C:/Users/נופר/Desktop/n/nofar33.txt";
-
 	private Desktop desktop;
-
 	private ArrayList<file> userfiles=null;
-
 	private int arraysize;
-
 	private String[] values;
-
 	JList list=null;
-
 	User user;
 
 	
 
 	public userMainMenuGUI(User user) {
-
 		this.user=user;
-
 		this.setSize(500, 500);
-
 		initialize();
 
 
 		if (user.getUserName().compareTo("nofar")!=0)
-
 	   this.setVisible(true);
 
 	}
 
 	private void initialize() {
-
-		
-
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
 		setBackground(Color.CYAN);
-
 		setBounds(400, 200, 300, 300);
-
 		this.setSize(500,400);
-
 		this.setTitle("main menu");;
-
 		this.setContentPane(getMainMenu());
-
 		userfiles=user.getFilesInDB();
-
         arraysize=user.getFilesInDB().size();
-
         values = new String[arraysize];
-
         for(int i=0;i<userfiles.size();i++)
-
 		{
-
 			values[i]=userfiles.get(i).getFileName();
-
 		}
-
 		desktop= Desktop.getDesktop();
-
 		btnCreateNewFile = new JButton("create new file");
-
 		btnCreateNewFile.setFont(new Font("Tahoma", Font.BOLD, 11));
-
 		btnCreateNewFile.setBounds(307, 216, 132, 23);    
-
 		btnCreateNewFile.setBackground(UIManager.getColor("SplitPane.background"));
-
-		MainMenu.add(btnCreateNewFile);
-
-		
+		MainMenu.add(btnCreateNewFile);		
 
 		btnLogOut = new JButton("log out");
-
 		btnLogOut.setFont(new Font("Tahoma", Font.BOLD, 11));
-
 		btnLogOut.setBackground(UIManager.getColor("SplitPane.background"));
-
 		btnLogOut.setBounds(307, 284, 89, 23);
-
 		MainMenu.add(btnLogOut);
 
 		
 
 		btnShowgroups = new JButton("show Groups");
-
 		btnShowgroups.setFont(new Font("Tahoma", Font.BOLD, 11));
-
 		btnShowgroups.setBackground(UIManager.getColor("SplitPane.background"));
-
 		btnShowgroups.setBounds(307, 143, 138, 25);
-
 		MainMenu.add(btnShowgroups);
 
 		
 
 		btnCreateNewFolder = new JButton("create new folder");
-
 		btnCreateNewFolder.setFont(new Font("Tahoma", Font.BOLD, 11));
-
 		btnCreateNewFolder.setBackground(UIManager.getColor("SplitPane.background"));
-
 		btnCreateNewFolder.setBounds(307, 180, 138, 25);
-
 		MainMenu.add(btnCreateNewFolder);
 
-		
-
 		open = new JButton("open");
-
 		open.setBounds(115, 283, 138, 25);
-
 		MainMenu.add(open);
 
 		open.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
-
 				Object source = e.getSource();
-
 				if (source==open)
-
 					try {
-
 						desktop.open(new File(filePath));
-
 					} catch (IOException e1) {
-
-						
-
-						e1.printStackTrace();
+                        e1.printStackTrace();
 
 					}
 

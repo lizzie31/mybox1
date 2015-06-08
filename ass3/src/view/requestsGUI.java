@@ -22,34 +22,13 @@ public class requestsGUI extends JFrame {
 
 	private JFrame frame;
 	private JPanel panel = null;
+	private JButton btnCancel;
 
-	/**
-	 * Launch the application.
-	 */
-/*	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					requestsGUI window = new requestsGUI();
-					window.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
-
-	/**
-	 * Create the application.
-	 */
 	public requestsGUI() {
 		initialize();
 		this.setVisible(true);
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		this.setBounds(100, 100, 345, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -89,10 +68,16 @@ public class requestsGUI extends JFrame {
 		{
 			panel=new JPanel();
 			panel.setLayout(null);
+			
+			btnCancel = new JButton("cancel");
+			btnCancel.setBounds(355, 195, 97, 25);
+			panel.add(btnCancel);
 		}
 		return panel;
 	}
-
+	public void addcancelRequest(ActionListener l) {
+		btnCancel.addActionListener(l);
+	}
 	public void close() {
 		this.setVisible(false);
 		dispose();

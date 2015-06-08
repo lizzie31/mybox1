@@ -46,17 +46,13 @@ public class userMainMenuController extends AbstractTransfer{
 
 	protected userMainMenuGUI CurrGui=null;
 
-	private logInCon prevController;
-
-	private User userDetails;
-
-	private fileMenuGui fileMenu;
-
-
-
-
-
+	protected logInCon prevController;
+	protected User userDetails;
+	protected fileMenuGui fileMenu;
+    protected fileMenuCon fileCon;
 	private Envelope en;
+
+
 
 	
 
@@ -149,8 +145,8 @@ public class userMainMenuController extends AbstractTransfer{
 				 String choosenFile=(String)CurrGui.getlist().getSelectedValue();
 
 				 fileMenu=new fileMenuGui(userDetails,choosenFile);
-
-				 //CurrGui.showMenu();
+				fileCon=new fileMenuCon(fileMenu,getCon(),userDetails);
+				
 
 				
 
@@ -289,7 +285,9 @@ public class userMainMenuController extends AbstractTransfer{
 		this.userDetails = userDetails;
 
 	}
-
+public userMainMenuController getCon(){
+		return this;
+	}
 	
 
 	public void handleDBResult(Object message) {
@@ -307,7 +305,9 @@ public class userMainMenuController extends AbstractTransfer{
 	SG.setVisible(true);
 
 	}
-
+public logInCon getPrevController() {
+		return prevController;
+	}
 	
 
 }
