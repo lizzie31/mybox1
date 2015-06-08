@@ -8,6 +8,7 @@ public class file extends AbstractModel{
 	{
 		fileName=name;
 		Direction=Dir;
+		System.out.println("nofar");
 	}
 	
 	public String getFileName()
