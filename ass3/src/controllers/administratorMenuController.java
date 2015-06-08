@@ -22,7 +22,22 @@ public class administratorMenuController extends userMainMenuController {
 	currgui2.addrequests(new ButtonrequestsListener());
 	currgui2.addcreatenewgroup(new ButtonCreateGroupListener());
 	currgui2.addcreatenewfile(new ButtoncreatenewfileListener());
+	currgui2.addcreatenewfolder(new ButtoncreatenewfolderListener());
+	}
+	private class ButtoncreatenewfolderListener implements ActionListener {
 
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			buttonCreatefolder();
+		}
+		
+	}
+private void buttonCreatefolder() {
+		CurrGui.close();
+		
+		createNewFolderGUI R= new createNewFolderGUI();
+		new createNewFolderController(R,this);
+		R.setVisible(true);
 	}
 	private class ButtonCreateGroupListener implements ActionListener {
 
