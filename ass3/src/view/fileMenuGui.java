@@ -56,6 +56,7 @@ public class fileMenuGui extends JFrame {
 
 
 	public fileMenuGui(User u,String FileName) {
+		System.out.println("aaa");
 		this.FileName=FileName;
 
 		this.user=u;
