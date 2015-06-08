@@ -1,47 +1,19 @@
 package controllers;
-
-
-
-
-
 import java.awt.CardLayout;
 
 import java.awt.Container;
-
-
-
 import view.*;
-
-
-
 import java.awt.CardLayout;
-
 import java.awt.event.ActionEvent;
-
 import java.awt.event.ActionListener;
-
 import java.util.ArrayList;
-
-
-
 import javax.swing.event.ListSelectionEvent;
-
-
-
 import client.myboxapp;
-
 import Model.Envelope;
-
 import Model.User;
-
 import Model.file;
 
-
-
-
-
 public class userMainMenuController extends AbstractTransfer{
-
 	protected userMainMenuGUI CurrGui=null;
 	protected logInCon prevController;
 	protected User userDetails;
@@ -49,14 +21,7 @@ public class userMainMenuController extends AbstractTransfer{
     protected fileMenuCon fileCon;
 	private Envelope en;
 
-
-
-	
-
-
-
 	public userMainMenuController(userMainMenuGUI menu, logInCon lastCon,User user) {
-
 		this.CurrGui= menu;
 		prevController=lastCon;
 		userDetails=user;
@@ -83,8 +48,6 @@ public class userMainMenuController extends AbstractTransfer{
 	 class LogOutListener implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
 
-				// TODO Auto-generated method stub
-
 				UpdateDB(); //update the user to status 0 = logout
 				CurrGui.dispose();
 				prevController.getLoginG().ClearText();
@@ -102,7 +65,6 @@ public class userMainMenuController extends AbstractTransfer{
 		 }
 	 
 	private class ButtoncreatenewfileListener implements ActionListener {
-
 		public void actionPerformed(ActionEvent arg0) {
 			buttoncreatenewfilePressed();
 		}
@@ -110,130 +72,73 @@ public class userMainMenuController extends AbstractTransfer{
 
 	private void buttoncreatenewfilePressed() {
 		CurrGui.close();
-
 		createNewFileGUI CNFG=new createNewFileGUI ();
-
 		new createNewFileController(CNFG,this);
-
 		CNFG.setVisible(true);
-
 	}
 
 	private class ButtoncreatenewfolderListener implements ActionListener {
-
-
-
-		@Override
-
 		public void actionPerformed(ActionEvent arg0) {
-
 			buttoncreatenewfolderPressed();
-
 		}
-
-		
-
 	}
 
 	private void buttoncreatenewfolderPressed() {
-
 		CurrGui.close();
-
 		createNewFolderGUI CNFOG=new createNewFolderGUI ();
-
 		new createNewFolderController(CNFOG,this);
-
 	    CNFOG.setVisible(true);
-
 	}
 
 	public userMainMenuGUI getusermainmenu() {
-
 		return CurrGui;
-
 	}
-
 	
-
 	private class ButtonAddleaveAGrouprListener implements ActionListener {
 
-
-
-		@Override
-
 		public void actionPerformed(ActionEvent arg0) {
-
 			buttonAddleaveAGroupPressed();
-
 		}
-
-		
-
 	}
-
-	
 
 	private void buttonAddleaveAGroupPressed() {
-
 		CurrGui.close();
-
 		EnterOrLeaveGroupGUI ALG=new EnterOrLeaveGroupGUI (userDetails);
-
 		new EnterOrLeaveGroupController(ALG,this);
-
 		ALG.setVisible(true);
-
 	}
 
-	
-
 	public void UpdateDB(){
-
-		//update the status of  current  user to 0 - logoff
-
+		
 		en=new Envelope(userDetails,"log out status");
-
 		 sendToServer(en);
-
 		 userDetails.setStatus(0);
-
 	}
 
 	public User getUserDetails() {
-
 		return userDetails;
-
 	}
 
 	public void setUserDetails(User userDetails) {
-
 		this.userDetails = userDetails;
-
 	}
+	
 public userMainMenuController getCon(){
 		return this;
 	}
 	
-
 	public void handleDBResult(Object message) {
-
 	userDetails = (User)message;
-
 	CurrGui.close();
-
 	this.setUserDetails((User)userDetails);
-
 	groupListGUI SG=new groupListGUI (userDetails);
-
 	new GroupsListController(SG,this);
-
 	SG.setVisible(true);
-
 	}
+	
 public logInCon getPrevController() {
 		return prevController;
 	}
-	
 
 }
 
