@@ -1,6 +1,2 @@
-/client/
 /controllers/
-/ocsf/
-/server/
-/view/
-/Model/
+/client/
