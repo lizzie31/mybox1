@@ -77,7 +77,7 @@ public class userMainMenuGUI extends JFrame {
 		this.setSize(500, 500);
 		initialize();
 		this.setVisible(true);
-		System.out.println("222299999");
+		System.out.println("nofar2");
 
 	}
 	private void initialize() {
