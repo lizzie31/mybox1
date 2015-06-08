@@ -4,11 +4,11 @@ import java.awt.EventQueue;
 
 
 
+
 import javax.swing.JFrame;
-
 import javax.swing.JList;
-
 import javax.swing.JPanel;
+
 
 
 
@@ -16,26 +16,27 @@ import java.awt.BorderLayout;
 
 
 
+
 import javax.swing.JLabel;
 
 
 
-import java.awt.Font;
 
+import java.awt.Font;
 import java.awt.event.ActionListener;
 
 
 
-import javax.swing.JButton;
 
+import javax.swing.JButton;
 import javax.swing.AbstractListModel;
+
 
 
 
 import Model.User;
 
 import java.awt.event.ActionEvent;
-
 import java.awt.SystemColor;
 
 public class fileMenuGui extends JFrame {
@@ -62,6 +63,7 @@ public class fileMenuGui extends JFrame {
 		initialize();
 
 		this.setVisible(true);
+		System.out.println("noafr");
 
 	}
 
