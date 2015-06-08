@@ -20,9 +20,26 @@ public class administratorMenuController extends userMainMenuController {
 	super(menu,lastCon,user);
     this.currgui2=menu2;
 	currgui2.addrequests(new ButtonrequestsListener());
+	currgui2.addcreatenewgroup(new ButtonCreateGroupListener());
 	currgui2.addcreatenewfile(new ButtoncreatenewfileListener());
 
 	}
+	private class ButtonCreateGroupListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			buttonCreateGroup();
+		}
+		
+	}
+private void buttonCreateGroup() {
+		CurrGui.close();
+		
+		createNewGroupGUI R= new createNewGroupGUI();
+		new createNewGroupController(R,this);
+		R.setVisible(true);
+	}
+
 	
 	private class ButtoncreatenewfileListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
@@ -44,5 +61,10 @@ public class administratorMenuController extends userMainMenuController {
 		requestsGUI R= new requestsGUI();
 		//new GroupsListController(R,this);
 	}
+	public administratorMenuGUI getAdminCon()
+	{
+		return this.currgui2;
+	}
+
 
 }
