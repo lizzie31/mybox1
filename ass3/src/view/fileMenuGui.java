@@ -64,7 +64,7 @@ public class fileMenuGui extends JFrame {
 		initialize();
 
 		this.setVisible(true);
-		System.out.println("noafr");
+		System.out.println("liz");
 
 	}
 
