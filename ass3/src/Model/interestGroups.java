@@ -7,17 +7,13 @@ package Model;
 		
 	
 		public interestGroups(String groupName) {
-		
 			this.groupName = groupName;
 		}
-
 
 
 		public String getGroupNumber() {
 			return groupName;
 		}
-
-
 
 		public void setGroupNumber(String groupNumber) {
 			this.groupName = groupNumber;

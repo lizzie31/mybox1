@@ -153,8 +153,10 @@ public class EchoServer extends AbstractServer
     if(en.getTask().equals("show user interest groups"))
     {
     	interestGroups s= null;
+    	interestGroups s2= null;
     	user=(User)en.getObject();
     	ArrayList<interestGroups> interestGroup=new ArrayList<>();
+    	ArrayList<interestGroups> allGroup=new ArrayList<>();
     	String re="select * from test.interstgroups where interstgroups.username= '"+user.getUserName() +"'";
     	 rs = stmt.executeQuery(re);
     	 while(rs.next()==true)
@@ -164,6 +166,16 @@ public class EchoServer extends AbstractServer
     	
     	 }
     	 user.setInterestGroupInDB(interestGroup);
+    	 String temp;
+    	 String re2="select distinct groupname from test.interstgroups";
+    	 rs = stmt.executeQuery(re2);
+    	 while(rs.next()==true)
+    	 {
+    		 temp = rs.getString(1);
+    		 s2=new interestGroups(temp);
+    		 allGroup.add(s2);
+    	 }
+    	 user.setAllGroupInDB(allGroup);
     	 en=new Envelope(user,"show user interest groups");
  		 client.sendToClient(en);
     	 

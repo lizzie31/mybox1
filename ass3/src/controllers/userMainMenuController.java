@@ -42,10 +42,7 @@ import Model.file;
 
 public class userMainMenuController extends AbstractTransfer{
 
-	
-
 	protected userMainMenuGUI CurrGui=null;
-
 	protected logInCon prevController;
 	protected User userDetails;
 	protected fileMenuGui fileMenu;
@@ -61,127 +58,57 @@ public class userMainMenuController extends AbstractTransfer{
 	public userMainMenuController(userMainMenuGUI menu, logInCon lastCon,User user) {
 
 		this.CurrGui= menu;
-
 		prevController=lastCon;
-
 		userDetails=user;
-
 		CurrGui.addcreatenewfile(new ButtoncreatenewfileListener());
-
 		CurrGui.addcreatenewfolder(new ButtoncreatenewfolderListener());
-
 		CurrGui.addleaveEntergruop(new ButtonAddleaveAGrouprListener());
-
 		CurrGui.addshowgruops(new ButtonshowgrouprListener());
-
 		CurrGui.addLogOut(new LogOutListener());
-
 		CurrGui.addlistClickedListener(new ListSelectionListener());
-
 	}
-
-
 
 	protected class ButtonshowgrouprListener implements ActionListener {
-
-
-
-		@Override
-
 		public void actionPerformed(ActionEvent arg0) {
-
 			buttonshowgroupPressed();
-
-		}
-
-		
-
+		}	
 	}
 
-	protected void buttonshowgroupPressed() {
-
-		
-
+	protected void buttonshowgroupPressed() {	
 		en=new Envelope(userDetails,"show user interest groups");
-
 		sendToServer(en);
-
-		myboxapp.clien.setCurrObj(this);
-
-
-
-		
-
+		myboxapp.clien.setCurrObj(this);	
 	}
 
 	 class LogOutListener implements ActionListener{
-
 			public void actionPerformed(ActionEvent e) {
 
 				// TODO Auto-generated method stub
 
 				UpdateDB(); //update the user to status 0 = logout
-
 				CurrGui.dispose();
-
 				prevController.getLoginG().ClearText();
-
 				prevController.getLoginG().setVisible(true);
-
-				
-
 			}
-
-	 }
-
-	 
+	 } 
 
 	 class ListSelectionListener implements javax.swing.event.ListSelectionListener{
 
-
-
 			public void valueChanged(ListSelectionEvent e) {
-
 				 String choosenFile=(String)CurrGui.getlist().getSelectedValue();
-
 				 fileMenu=new fileMenuGui(userDetails,choosenFile);
 				fileCon=new fileMenuCon(fileMenu,getCon(),userDetails);
-				
-
-				
-
 			}
-
-			 
-
 		 }
-
-
-
-
-
-
-
+	 
 	private class ButtoncreatenewfileListener implements ActionListener {
 
-
-
-		@Override
-
 		public void actionPerformed(ActionEvent arg0) {
-
 			buttoncreatenewfilePressed();
-
 		}
-
-		
-
 	}
 
-	
-
 	private void buttoncreatenewfilePressed() {
-
 		CurrGui.close();
 
 		createNewFileGUI CNFG=new createNewFileGUI ();

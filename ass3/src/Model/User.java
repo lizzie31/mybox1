@@ -19,6 +19,7 @@ public class User extends AbstractModel {
 	private int status;
 	private  ArrayList<file> filesInDB=null;
 	private  ArrayList<interestGroups> interestGroupInDB=null;
+	private  ArrayList<interestGroups> allGroupInDB=null;
 	private String email = null;
 
 /**
@@ -125,6 +126,14 @@ public void setFilesInDB(ArrayList<file> filesInDB) {
 		public void setStatus(int status) {
 			this.status = status;
 		}
+
+	public ArrayList<interestGroups> getAllGroupInDB() {
+		return allGroupInDB;
+	}
+
+	public void setAllGroupInDB(ArrayList<interestGroups> allGroupInDB) {
+		this.allGroupInDB = allGroupInDB;
+	}
 		
 
 	
