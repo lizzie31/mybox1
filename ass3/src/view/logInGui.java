@@ -48,7 +48,6 @@ public class logInGui extends JFrame{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		System.out.println("hi");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(400, 200, 300, 300);
 		this.setSize(500, 300);
@@ -99,7 +98,6 @@ public class logInGui extends JFrame{
      }
      
      public JButton getbtnLogin(){
-    	 System.out.println("gg");
 		btnLogin = new JButton("LogIn");
 		btnLogin.setBackground(SystemColor.menu);
 		btnLogin.addActionListener(new ActionListener() {
