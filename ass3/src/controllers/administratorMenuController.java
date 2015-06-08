@@ -20,7 +20,14 @@ public class administratorMenuController extends userMainMenuController {
 	super(menu,lastCon,user);
     this.currgui2=menu2;
 	currgui2.addrequests(new ButtonrequestsListener());
+	currgui2.addcreatenewfile(new ButtoncreatenewfileListener());
 
+	}
+	
+	private class ButtoncreatenewfileListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			//super();
+		}
 	}
 	
 	private class ButtonrequestsListener implements ActionListener {
