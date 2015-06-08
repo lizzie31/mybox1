@@ -6,8 +6,10 @@ import javax.swing.JList;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.DefaultMutableTreeNode;
+
 import java.awt.BorderLayout;
 
+import javax.swing.AbstractListModel;
 import javax.swing.JScrollBar;
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -28,9 +30,13 @@ import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import Model.User;
+import Model.file;
 import controllers.*;
 
 import java.awt.Color;
+import java.util.ArrayList;
+
 import javax.swing.UIManager;
 public class administratorMenuGUI extends JFrame {
 
@@ -40,10 +46,16 @@ public class administratorMenuGUI extends JFrame {
 	private JButton btnShowgroups=null;
 	private JButton btnCreateNewFolder=null;
 	private JButton btnAddleaveAGroup=null;
+	private User user;
 	private JButton btnrequests = null;
+	private ArrayList<file> userfiles=null;
+	private int arraysize;
+	private String[] values;
+	JList list=null;
 	
-	public administratorMenuGUI() {
+	public administratorMenuGUI(User user) {
 		this.setSize(500, 500);
+		this.user=user;
 		initialize();
 		this.setVisible(true);
 		
@@ -58,7 +70,13 @@ public class administratorMenuGUI extends JFrame {
 		this.setTitle("main menu");;
 		this.setContentPane(getMainMenu());
 
-		
+		userfiles=user.getFilesInDB();
+        arraysize=user.getFilesInDB().size();
+        values = new String[arraysize];
+        for(int i=0;i<userfiles.size();i++)
+		{
+			values[i]=userfiles.get(i).getFileName();
+		}
 		btnCreateNewFile = new JButton("create new file");
 		btnCreateNewFile.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnCreateNewFile.setBounds(307, 250, 132, 23);    
@@ -96,16 +114,17 @@ public class administratorMenuGUI extends JFrame {
 MainMenu.setBackground(new Color(152, 251, 152));
 		MainMenu.setLayout(null);
 
-		JTree myFolder = new JTree();
-		myFolder.setEditable(true);
-		myFolder.setModel(new DefaultTreeModel(
-			new DefaultMutableTreeNode("myFolders") {
-				{
-				}
+		list = new JList();
+		list.setModel(new AbstractListModel() {
+			public int getSize() {
+				return values.length;
 			}
-		));
-		myFolder.setBounds(47, 112, 162, 190);
-		MainMenu.add(myFolder);
+			public Object getElementAt(int index) {
+				return values[index];
+			}
+		});
+		list.setBounds(54, 140, 168, 132);
+		MainMenu.add(list);
 		
 		JLabel lblHelloSystemAdministrtor = new JLabel("hello system administrtor");
 		lblHelloSystemAdministrtor.setFont(new Font("Tahoma", Font.BOLD, 14));
