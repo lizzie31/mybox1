@@ -42,8 +42,6 @@ import Model.file;
 
 public class userMainMenuController extends AbstractTransfer{
 
-	
-
 	protected userMainMenuGUI CurrGui=null;
 
 	private logInCon prevController;
@@ -52,88 +50,43 @@ public class userMainMenuController extends AbstractTransfer{
 
 	private fileMenuGui fileMenu;
 
-
-
-
-
 	private Envelope en;
 
-	
-
-
-
 	public userMainMenuController(userMainMenuGUI menu, logInCon lastCon,User user) {
-
 		this.CurrGui= menu;
-
 		prevController=lastCon;
-
 		userDetails=user;
-
 		CurrGui.addcreatenewfile(new ButtoncreatenewfileListener());
-
 		CurrGui.addcreatenewfolder(new ButtoncreatenewfolderListener());
-
 		CurrGui.addleaveEntergruop(new ButtonAddleaveAGrouprListener());
-
 		CurrGui.addshowgruops(new ButtonshowgrouprListener());
-
 		CurrGui.addLogOut(new LogOutListener());
-
 		CurrGui.addlistClickedListener(new ListSelectionListener());
-
 	}
 
 
 
 	protected class ButtonshowgrouprListener implements ActionListener {
 
-
-
-		@Override
-
 		public void actionPerformed(ActionEvent arg0) {
-
 			buttonshowgroupPressed();
-
 		}
-
-		
-
 	}
 
 	protected void buttonshowgroupPressed() {
-
-		
-
 		en=new Envelope(userDetails,"show user interest groups");
-
 		sendToServer(en);
-
 		myboxapp.clien.setCurrObj(this);
-
-
-
-		
 
 	}
 
 	 class LogOutListener implements ActionListener{
 
 			public void actionPerformed(ActionEvent e) {
-
-				// TODO Auto-generated method stub
-
 				UpdateDB(); //update the user to status 0 = logout
-
 				CurrGui.dispose();
-
 				prevController.getLoginG().ClearText();
-
 				prevController.getLoginG().setVisible(true);
-
-				
-
 			}
 
 	 }
@@ -142,173 +95,84 @@ public class userMainMenuController extends AbstractTransfer{
 
 	 class ListSelectionListener implements javax.swing.event.ListSelectionListener{
 
-
-
 			public void valueChanged(ListSelectionEvent e) {
-
 				 String choosenFile=(String)CurrGui.getlist().getSelectedValue();
-
-				 fileMenu=new fileMenuGui(userDetails,choosenFile);
-
-				 //CurrGui.showMenu();
-
-				
-
-			}
-
-			 
+				 fileMenu=new fileMenuGui(userDetails,choosenFile);	
+			}			 
 
 		 }
 
-
-
-
-
-
-
-	private class ButtoncreatenewfileListener implements ActionListener {
-
-
-
-		@Override
+	 private class ButtoncreatenewfileListener implements ActionListener {
 
 		public void actionPerformed(ActionEvent arg0) {
-
 			buttoncreatenewfilePressed();
-
 		}
-
-		
-
 	}
 
-	
-
 	private void buttoncreatenewfilePressed() {
-
 		CurrGui.close();
-
 		createNewFileGUI CNFG=new createNewFileGUI ();
-
 		new createNewFileController(CNFG,this);
-
 		CNFG.setVisible(true);
-
 	}
 
 	private class ButtoncreatenewfolderListener implements ActionListener {
 
-
-
-		@Override
-
 		public void actionPerformed(ActionEvent arg0) {
-
 			buttoncreatenewfolderPressed();
-
 		}
-
-		
 
 	}
 
-	
-
 	private void buttoncreatenewfolderPressed() {
-
 		CurrGui.close();
-
 		createNewFolderGUI CNFOG=new createNewFolderGUI ();
-
 		new createNewFolderController(CNFOG,this);
-
 	    CNFOG.setVisible(true);
-
 	}
 
 	public userMainMenuGUI getusermainmenu() {
-
 		return CurrGui;
-
 	}
-
-	
 
 	private class ButtonAddleaveAGrouprListener implements ActionListener {
 
-
-
-		@Override
-
 		public void actionPerformed(ActionEvent arg0) {
-
 			buttonAddleaveAGroupPressed();
-
 		}
-
-		
-
 	}
-
-	
-
 	private void buttonAddleaveAGroupPressed() {
-
 		CurrGui.close();
-
 		EnterOrLeaveGroupGUI ALG=new EnterOrLeaveGroupGUI ();
-
 		new EnterOrLeaveGroupController(ALG,this);
-
 		ALG.setVisible(true);
-
 	}
-
-	
 
 	public void UpdateDB(){
-
 		//update the status of  current  user to 0 - logoff
-
 		en=new Envelope(userDetails,"log out status");
-
 		 sendToServer(en);
-
 		 userDetails.setStatus(0);
 
 	}
 
 	public User getUserDetails() {
-
 		return userDetails;
-
 	}
 
 	public void setUserDetails(User userDetails) {
-
 		this.userDetails = userDetails;
-
 	}
 
-	
-
 	public void handleDBResult(Object message) {
-
 	userDetails = (User)message;
-
 	CurrGui.close();
-
 	this.setUserDetails((User)userDetails);
-
 	groupListGUI SG=new groupListGUI (userDetails);
-
 	new GroupsListController(SG,this);
-
 	SG.setVisible(true);
 
 	}
-
-	
 
 }
 
