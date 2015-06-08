@@ -256,7 +256,7 @@ public class userMainMenuController extends AbstractTransfer{
 
 		CurrGui.close();
 
-		EnterOrLeaveGroupGUI ALG=new EnterOrLeaveGroupGUI ();
+		EnterOrLeaveGroupGUI ALG=new EnterOrLeaveGroupGUI (userDetails);
 
 		new EnterOrLeaveGroupController(ALG,this);
 

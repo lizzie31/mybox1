@@ -15,6 +15,8 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.JMenu;
 
+import Model.User;
+
 public class EnterOrLeaveGroupGUI extends JFrame {
 
 	private JFrame frmEnterLeaveGroup;
@@ -22,11 +24,15 @@ public class EnterOrLeaveGroupGUI extends JFrame {
 	private JButton btnCancel;
 	private JButton btnSendToSystem;
 	private JPanel panel=null;
+	private String[] values;
+	private User user;
 	/**
 	 * Launch the application.
 	 * Create the application.
+	 * @param u 
 	 */
-	public EnterOrLeaveGroupGUI() {
+	public EnterOrLeaveGroupGUI(User u) {
+		this.user=u;
 		initialize();
 	}
 
@@ -39,6 +45,11 @@ public class EnterOrLeaveGroupGUI extends JFrame {
 		this.setSize(500,500);
 		this.setContentPane(getCreatePanel());
 		
+		values=new String[user.getInterestGroupInDB().size()];
+		for(int i=0;i<user.getInterestGroupInDB().size();i++){
+	
+		values[i]=user.getInterestGroupInDB().get(i).getGroupNumber();
+		}
 		JLabel lblUsername = new JLabel("userName");
 		lblUsername.setBounds(31, 37, 113, 16);
 		panel.add(lblUsername);
@@ -59,6 +70,8 @@ public class EnterOrLeaveGroupGUI extends JFrame {
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(215, 169, 131, 22);
+		for(int i = 0; i < values.length; i++)
+			comboBox.addItem(values[i]);
 		panel.add(comboBox);
 		
 		JComboBox comboBox_1 = new JComboBox();
