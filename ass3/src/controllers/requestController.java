@@ -26,7 +26,8 @@ public class requestController {
 	}
 	private void buttoncancelPressed() {
 		request.close();
-		prevController.getusermainmenu().setVisible(true);
+		prevController.getusermainmenu2().setVisible(true);
+		
 	}
 	
 }
