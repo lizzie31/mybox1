@@ -25,7 +25,9 @@ public class createNewFolderController {
 	}
 	private void buttoncancelPressed() {
 		createfolder.close();
-		prevController.getusermainmenu().setVisible(true);
+		if (prevController instanceof administratorMenuController)
+		((administratorMenuController) prevController).getusermainmenu2().setVisible(true);
+		else prevController.getusermainmenu().setVisible(true);
 	}
 }
 

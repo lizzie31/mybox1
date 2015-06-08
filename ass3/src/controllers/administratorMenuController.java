@@ -10,7 +10,7 @@ import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import controllers.userMainMenuController.LogOutListener;
+
 import Model.User;
 
 public class administratorMenuController extends userMainMenuController {
@@ -23,20 +23,8 @@ public class administratorMenuController extends userMainMenuController {
 	currgui2.addrequests(new ButtonrequestsListener());
 	currgui2.addcreatenewgroup(new ButtonCreateGroupListener());
 	currgui2.addcreatenewfile(new ButtoncreatenewfileListener());
-	currgui2.addlogout(new LogOutListener());
 
 	}
-	
-	 class LogOutListener implements ActionListener{
-
-			public void actionPerformed(ActionEvent e) {
-				UpdateDB(); 
-				currgui2.dispose();
-				getPrevController().getLoginG().ClearText();
-				getPrevController().getLoginG().setVisible(true);
-			;
-			}
-	 }
 	private class ButtonCreateGroupListener implements ActionListener {
 
 		@Override
