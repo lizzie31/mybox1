@@ -47,6 +47,7 @@ public class administratorMenuGUI extends JFrame {
 	private JButton btnCreateNewFolder=null;
 	private JButton btnAddleaveAGroup=null;
 	private JButton btncratenewgroup=null;
+	private JButton btnLogOut=null;
 	private User user;
 	private JButton btnrequests = null;
 	private ArrayList<file> userfiles=null;
@@ -84,7 +85,7 @@ public class administratorMenuGUI extends JFrame {
 		btnCreateNewFile.setBackground(UIManager.getColor("SplitPane.background"));
 		MainMenu.add(btnCreateNewFile);
 		
-		JButton btnLogOut = new JButton("log out");
+		btnLogOut = new JButton("log out");
 		btnLogOut.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnLogOut.setBackground(UIManager.getColor("SplitPane.background"));
 		btnLogOut.setBounds(307, 284, 89, 23);
@@ -170,6 +171,9 @@ MainMenu.setBackground(new Color(152, 251, 152));
 	}
 	public void addleaveEntergruop(ActionListener l) {
 		btnAddleaveAGroup.addActionListener(l);
+	}
+	public void addlogout(ActionListener l) {
+		btnLogOut.addActionListener(l);
 	}
 	public void close() {
 		this.setVisible(false);
