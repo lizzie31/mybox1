@@ -46,6 +46,7 @@ public class ServerController {
         ServerView.addLoginActionListener(new LoginListener());
         serverLogView.addDisconnectedBottonActionListener(new DisconnectedListener());
         System.out.println("nofarrrrr");
+        System.out.println("lizzieeee");
     }
     
     class LoginListener implements ActionListener {
