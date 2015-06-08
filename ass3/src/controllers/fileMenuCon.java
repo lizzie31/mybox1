@@ -12,10 +12,8 @@ public class fileMenuCon {
 	private User user;
 	private fileMenuGui CurrGui;
 	private userMainMenuController prevCon;
-	private userMainMenuGUI menuGui;
 	
 	public fileMenuCon(fileMenuGui menu,userMainMenuController  lastCon,User user) {
-		this.menuGui=menuGui; 
 		this.user=user;
 		this.CurrGui=menu;
 		this.prevCon=lastCon;
