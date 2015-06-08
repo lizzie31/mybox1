@@ -208,8 +208,6 @@ public class userMainMenuController extends AbstractTransfer{
 
 	}
 
-	
-
 	private void buttoncreatenewfolderPressed() {
 
 		CurrGui.close();
