@@ -82,9 +82,6 @@ public class userMainMenuController extends AbstractTransfer{
 
 	 class LogOutListener implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
-
-				// TODO Auto-generated method stub
-
 				UpdateDB(); //update the user to status 0 = logout
 				CurrGui.dispose();
 				prevController.getLoginG().ClearText();
