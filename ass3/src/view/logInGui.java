@@ -55,7 +55,7 @@ public class logInGui extends JFrame{
 		this.setTitle("myBox/login");
 		this.setVisible(true);
 		System.out.println("12");
-
+		System.out.println("123 dana");
 		}
 		
 	 public String getTextUserName() {
