@@ -95,7 +95,6 @@ public class userMainMenuGUI extends JFrame {
 		{
 			values[i]=userfiles.get(i).getFileName();
 		}
-        System.out.println("hello");
 		desktop= Desktop.getDesktop();
 		btnCreateNewFile = new JButton("create new file");
 		btnCreateNewFile.setFont(new Font("Tahoma", Font.BOLD, 11));
