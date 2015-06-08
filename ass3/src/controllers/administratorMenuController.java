@@ -41,11 +41,20 @@ private void buttonCreateGroup() {
 	}
 
 	
-	private class ButtoncreatenewfileListener implements ActionListener {
-		public void actionPerformed(ActionEvent arg0) {
-			//super();
-		}
+
+private class ButtoncreatenewfileListener implements ActionListener {
+@Override
+	public void actionPerformed(ActionEvent arg0) {
+		buttoncreatenewfilePressed();
 	}
+}
+private void buttoncreatenewfilePressed() {
+	CurrGui.close();
+	createNewFileGUI CNFG=new createNewFileGUI ();
+	new createNewFileController(CNFG,this);
+	CNFG.setVisible(true);
+
+}
 	
 	private class ButtonrequestsListener implements ActionListener {
 
@@ -64,6 +73,11 @@ private void buttonCreateGroup() {
 	public administratorMenuGUI getAdminCon()
 	{
 		return this.currgui2;
+	}
+	public administratorMenuGUI getusermainmenu2() {
+
+		return currgui2;
+
 	}
 
 
