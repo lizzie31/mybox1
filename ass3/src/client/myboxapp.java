@@ -15,7 +15,7 @@ public class myboxapp {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("Sabina");
 		MyBoxClientGUI clientView = new MyBoxClientGUI();
 		MyBoxClientModel clientModel = new MyBoxClientModel();
 		MyBoxClientController clientController = new MyBoxClientController(clientView,clientModel);
