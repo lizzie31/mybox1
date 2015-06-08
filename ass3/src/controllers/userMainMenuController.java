@@ -44,11 +44,11 @@ public class userMainMenuController extends AbstractTransfer{
 
 	protected userMainMenuGUI CurrGui=null;
 
-	private logInCon prevController;
+	protected logInCon prevController;
 
-	private User userDetails;
+	protected User userDetails;
 
-	private fileMenuGui fileMenu;
+	protected fileMenuGui fileMenu;
 
 	private Envelope en;
 
@@ -173,6 +173,11 @@ public class userMainMenuController extends AbstractTransfer{
 	SG.setVisible(true);
 
 	}
+
+	public logInCon getPrevController() {
+		return prevController;
+	}
+
 
 }
 
