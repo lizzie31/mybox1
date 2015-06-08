@@ -46,6 +46,7 @@ public class administratorMenuGUI extends JFrame {
 	private JButton btnShowgroups=null;
 	private JButton btnCreateNewFolder=null;
 	private JButton btnAddleaveAGroup=null;
+	private JButton btncratenewgroup=null;
 	private User user;
 	private JButton btnrequests = null;
 	private ArrayList<file> userfiles=null;
@@ -131,10 +132,10 @@ MainMenu.setBackground(new Color(152, 251, 152));
 		lblHelloSystemAdministrtor.setBounds(111, 11, 187, 24);
 		MainMenu.add(lblHelloSystemAdministrtor);
 		
-		JButton btnNewButton = new JButton("create group");
-		btnNewButton.setBackground(UIManager.getColor("SplitPane.shadow"));
-		btnNewButton.setBounds(338, 77, 101, 23);
-		MainMenu.add(btnNewButton);
+		btncratenewgroup = new JButton("create group");
+		btncratenewgroup.setBackground(UIManager.getColor("SplitPane.shadow"));
+		btncratenewgroup.setBounds(338, 77, 101, 23);
+		MainMenu.add(btncratenewgroup);
 		
 		JButton btnNewButton_1 = new JButton("delete group");
 		btnNewButton_1.setBackground(UIManager.getColor("SplitPane.shadow"));
@@ -153,6 +154,9 @@ MainMenu.setBackground(new Color(152, 251, 152));
 		}
 		return MainMenu;
 		
+	}
+	public void addcreatenewgroup(ActionListener l) {
+		btncratenewgroup.addActionListener(l);
 	}
 	public void addrequests(ActionListener l) {
 		btnrequests.addActionListener(l);
