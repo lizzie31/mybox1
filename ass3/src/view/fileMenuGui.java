@@ -49,10 +49,12 @@ public class fileMenuGui extends JFrame {
 	private String[] values = null;
 
 	private User user;
+	private String FileName;
 
 
 
 	public fileMenuGui(User u,String FileName) {
+		this.FileName=FileName;
 
 		this.user=u;
 
@@ -134,11 +136,11 @@ public class fileMenuGui extends JFrame {
 
 			
 
-			JLabel lblWhatIsThe = new JLabel("what is the action you want to do with the file:");
+			JLabel lblWhatIsThe = new JLabel("what is the action you want to do with the file:"+FileName);
 
 			lblWhatIsThe.setFont(new Font("Arial Black", Font.PLAIN, 12));
 
-			lblWhatIsThe.setBounds(44, 11, 358, 34);
+			lblWhatIsThe.setBounds(28, 11, 411, 34);
 
 			panel.add(lblWhatIsThe);
 
