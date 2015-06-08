@@ -1,55 +1,31 @@
 package controllers;
 
 
-
-
-
 import java.awt.CardLayout;
-
 import java.awt.Container;
-
-
 
 import view.*;
 
-
-
 import java.awt.CardLayout;
-
 import java.awt.event.ActionEvent;
-
 import java.awt.event.ActionListener;
-
 import java.util.ArrayList;
-
-
 
 import javax.swing.event.ListSelectionEvent;
 
-
-
 import client.myboxapp;
-
 import Model.Envelope;
-
 import Model.User;
-
 import Model.file;
-
-
-
 
 
 public class userMainMenuController extends AbstractTransfer{
 
 	protected userMainMenuGUI CurrGui=null;
-
 	protected logInCon prevController;
-
 	protected User userDetails;
-
 	protected fileMenuGui fileMenu;
-
+    protected fileMenuCon fileCon;
 	private Envelope en;
 
 	public userMainMenuController(userMainMenuGUI menu, logInCon lastCon,User user) {
@@ -98,6 +74,7 @@ public class userMainMenuController extends AbstractTransfer{
 			public void valueChanged(ListSelectionEvent e) {
 				 String choosenFile=(String)CurrGui.getlist().getSelectedValue();
 				 fileMenu=new fileMenuGui(userDetails,choosenFile);	
+				 fileCon=new fileMenuCon(fileMenu,getCon(),userDetails);
 			}			 
 
 		 }
@@ -164,6 +141,9 @@ public class userMainMenuController extends AbstractTransfer{
 		this.userDetails = userDetails;
 	}
 
+	public userMainMenuController getCon(){
+		return this;
+	}
 	public void handleDBResult(Object message) {
 	userDetails = (User)message;
 	CurrGui.close();
