@@ -183,7 +183,8 @@ public class logInCon extends AbstractTransfer
 		        myboxapp.clien.setCurrUser(user);	 
 		        loginG.dispose();
 		        Menu2= new administratorMenuGUI();
-		        new administratorMenuController();
+		        Menu= new userMainMenuGUI(user);
+		        new administratorMenuController(Menu,this,user,Menu2);
 		 }
 		 else{
 		        UpdateDB(); //update the status to 1 that we know the user is login the system 

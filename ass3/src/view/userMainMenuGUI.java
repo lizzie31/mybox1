@@ -76,8 +76,8 @@ public class userMainMenuGUI extends JFrame {
 		this.user=user;
 		this.setSize(500, 500);
 		initialize();
-		this.setVisible(true);
-		System.out.println("nofarrrrrrrrrr");
+		if (user.getUserName().compareTo("nofar")!=0)
+	   this.setVisible(true);
 
 	}
 	private void initialize() {

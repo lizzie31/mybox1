@@ -44,6 +44,7 @@ public class requestsGUI extends JFrame {
 	 */
 	public requestsGUI() {
 		initialize();
+		this.setVisible(true);
 	}
 
 	/**

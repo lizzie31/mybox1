@@ -10,14 +10,17 @@ import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import Model.User;
+
 public class administratorMenuController extends userMainMenuController {
 	
-	private administratorMenuGUI CurrGui=null;
-	
-	public administratorMenuController (){
+	private administratorMenuGUI currgui2;
+	public administratorMenuController (userMainMenuGUI menu,logInCon lastCon,User user,administratorMenuGUI menu2){
 		
-	super(null,null,null);
-	CurrGui.addrequests(new ButtonrequestsListener());
+	super(menu,lastCon,user);
+    this.currgui2=menu2;
+	currgui2.addrequests(new ButtonrequestsListener());
+
 	}
 	
 	private class ButtonrequestsListener implements ActionListener {
@@ -33,7 +36,6 @@ public class administratorMenuController extends userMainMenuController {
 		CurrGui.close();
 		requestsGUI R= new requestsGUI();
 		//new GroupsListController(R,this);
-		R.setVisible(true);
 	}
 
 }

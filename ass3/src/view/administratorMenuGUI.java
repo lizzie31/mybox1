@@ -40,7 +40,7 @@ public class administratorMenuGUI extends JFrame {
 	private JButton btnShowgroups=null;
 	private JButton btnCreateNewFolder=null;
 	private JButton btnAddleaveAGroup=null;
-	private JButton btnRequests = null;
+	private JButton btnrequests = null;
 	
 	public administratorMenuGUI() {
 		this.setSize(500, 500);
@@ -127,16 +127,16 @@ MainMenu.setBackground(new Color(152, 251, 152));
 		btnNewButton_2.setBounds(338, 143, 101, 23);
 		MainMenu.add(btnNewButton_2);
 		
-		btnRequests = new JButton("requests");
-		btnRequests.setBounds(338, 177, 101, 23);
-		MainMenu.add(btnRequests);
+		btnrequests = new JButton("requests");
+		btnrequests.setBounds(338, 177, 101, 23);
+		MainMenu.add(btnrequests);
 		
 		}
 		return MainMenu;
 		
 	}
 	public void addrequests(ActionListener l) {
-		btnRequests.addActionListener(l);
+		btnrequests.addActionListener(l);
 	}
 	
 	public void addcreatenewfile(ActionListener l) {

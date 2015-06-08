@@ -22,15 +22,15 @@ import Model.file;
 public class userMainMenuController extends AbstractTransfer{
 	
 	protected userMainMenuGUI CurrGui=null;
-	private logInCon prevController;
-	private User userDetails;
+	protected logInCon prevController;
+	protected User userDetails;
 
 
 	private Envelope en;
 	
 
 	public userMainMenuController(userMainMenuGUI menu, logInCon lastCon,User user) {
-		this.CurrGui=menu;
+		this.CurrGui= menu;
 		prevController=lastCon;
 		userDetails=user;
 		CurrGui.addcreatenewfile(new ButtoncreatenewfileListener());
@@ -41,7 +41,7 @@ public class userMainMenuController extends AbstractTransfer{
 		// TODO Auto-generated constructor stub
 	}
 
-	private class ButtonshowgrouprListener implements ActionListener {
+	protected class ButtonshowgrouprListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
@@ -49,7 +49,7 @@ public class userMainMenuController extends AbstractTransfer{
 		}
 		
 	}
-	private void buttonshowgroupPressed() {
+	protected void buttonshowgroupPressed() {
 		
 		en=new Envelope(userDetails,"show user interest groups");
 		sendToServer(en);
