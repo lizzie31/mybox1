@@ -45,6 +45,7 @@ public class administratorMenuGUI extends JFrame {
 	public administratorMenuGUI() {
 		this.setSize(500, 500);
 		initialize();
+		this.setVisible(true);
 		
 
 	}

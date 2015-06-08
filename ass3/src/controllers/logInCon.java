@@ -13,6 +13,7 @@ import Model.Envelope;
 import Model.User;
 import Model.file;
 import Model.logInMod;
+import view.administratorMenuGUI;
 import view.forgget_password;
 import view.logInGui;
 import view.userMainMenuGUI;
@@ -31,6 +32,7 @@ public class logInCon extends AbstractTransfer
 	private logInMod loginM;
 	private logInCon tempL;
 	private User user;
+	private administratorMenuGUI  Menu2;
 	private userMainMenuGUI Menu;
 	private forgget_password frgt;
 	private String username;
@@ -176,6 +178,13 @@ public class logInCon extends AbstractTransfer
 		 user = (User)message;
 		 if(user.getStatus() == 1)
 				loginG.setWarningMessageVisibleTrue("This user name is already Login to system");
+		 else if(user.getUserName().equals("nofar")){
+			   UpdateDB(); //update the status to 1 that we know the user is login the system 
+		        myboxapp.clien.setCurrUser(user);	 
+		        loginG.dispose();
+		        Menu2= new administratorMenuGUI();
+		        new administratorMenuController();
+		 }
 		 else{
 		        UpdateDB(); //update the status to 1 that we know the user is login the system 
 		        myboxapp.clien.setCurrUser(user);	 
@@ -183,6 +192,7 @@ public class logInCon extends AbstractTransfer
 		        Menu= new userMainMenuGUI(user);
 		        new userMainMenuController(Menu,this,user);
 		 }
+		 
 		
 	}
 
