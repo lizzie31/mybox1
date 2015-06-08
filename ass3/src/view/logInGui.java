@@ -98,6 +98,7 @@ public class logInGui extends JFrame{
      }
      
      public JButton getbtnLogin(){
+    	 System.out.println("gg");
 		btnLogin = new JButton("LogIn");
 		btnLogin.setBackground(SystemColor.menu);
 		btnLogin.addActionListener(new ActionListener() {
