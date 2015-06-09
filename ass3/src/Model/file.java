@@ -1,8 +1,16 @@
 package Model;
 
+import java.util.ArrayList;
+
 public class file extends AbstractModel{
 	private String fileName;
 	private String Direction;
+	private ArrayList<file> fileArr = new ArrayList<>();
+	
+	public file(String name)
+	{
+		fileName=name;
+	}
 	
 	public file(String name,String Dir)
 	{
@@ -29,4 +37,12 @@ public class file extends AbstractModel{
 	{
 	this.Direction=dir;
     }
+
+	public ArrayList<file> getFileArr() {
+		return fileArr;
+	}
+
+	public void setFileArr(ArrayList<file> fileArr) {
+		this.fileArr = fileArr;
+	}
 }
