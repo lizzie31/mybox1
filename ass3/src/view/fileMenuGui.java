@@ -52,7 +52,8 @@ public class fileMenuGui extends JFrame {
 	private User user;
 	
 	private String FileName;
-	JButton btnCancel_1=null;
+	private JButton btnCancel_1=null;
+	private JButton btnRead=null;
 
 
 
@@ -98,7 +99,7 @@ public class fileMenuGui extends JFrame {
 			panel.setLayout(null);
 	
 
-			JButton btnRead = new JButton("read");
+			btnRead = new JButton("read");
 			btnRead.setBounds(26, 56, 137, 23);
 			panel.add(btnRead);
 
@@ -109,15 +110,11 @@ public class fileMenuGui extends JFrame {
 
 			JButton btnNewButton = new JButton("delete");
 			btnNewButton.addActionListener(new ActionListener() {
-
 				public void actionPerformed(ActionEvent e) {
-
 				}
-
 			});
 
 			btnNewButton.setBounds(184, 56, 137, 23);
-
 			panel.add(btnNewButton);
 
 			
@@ -135,12 +132,8 @@ public class fileMenuGui extends JFrame {
 			btnSetContent.setBounds(337, 56, 137, 23);
 			panel.add(btnSetContent);
 
-			
-
 			btnCancel_1 = new JButton("cancel");
-
 			btnCancel_1.setBounds(337, 108, 137, 23);
-
 			panel.add(btnCancel_1);
 
 		}
@@ -154,11 +147,15 @@ public class fileMenuGui extends JFrame {
 	}
 
 	public void close() {
-
 		this.setVisible(false);
-
 		dispose();
 
+	}
+
+
+
+	public void addread(ActionListener l) {
+		btnRead.addActionListener(l);
 	}
 	
 

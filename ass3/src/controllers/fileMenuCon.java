@@ -39,7 +39,7 @@ public class fileMenuCon {
 			{
 				if(user.getFilesInDB().get(i).equals(ChoosenFile))
 				{
-					if()
+					//if()
 				}
 			}
 			

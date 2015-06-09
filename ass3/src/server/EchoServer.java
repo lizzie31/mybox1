@@ -109,7 +109,7 @@ public class EchoServer extends AbstractServer
 				rs1 = stmt.executeQuery(re2);
 				while(rs1.next()==true)
 				 {
-					 f=new file(rs1.getString(2),rs1.getString(3));
+					 f=new file(rs1.getString(2),rs1.getString(3),rs1.getString(4));
 					 files.add(f);
 				 }
 	    	 user = new User(username,pass,mail,status,files);

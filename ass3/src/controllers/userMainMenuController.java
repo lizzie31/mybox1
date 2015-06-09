@@ -93,8 +93,15 @@ public class userMainMenuController extends AbstractTransfer{
 
 			public void valueChanged(ListSelectionEvent e) {
 				 String choosenFile=(String)CurrGui.getlist().getSelectedValue();
+				 file file = null;
+				 for(int i=0;i<userDetails.getFilesInDB().size();i++)
+					{
+						if(userDetails.getFilesInDB().get(i).getFileName().equals(choosenFile))
+							file=userDetails.getFilesInDB().get(i);
+					}
+							
 				 fileMenu=new fileMenuGui(userDetails,choosenFile);
-				fileCon=new fileMenuCon(fileMenu,getCon(),userDetails);
+				 fileCon=new fileMenuCon(fileMenu,getCon(),userDetails,file);
 			}
 		 }
 	 
