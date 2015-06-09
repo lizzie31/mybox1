@@ -82,6 +82,9 @@ public class MyBoxClient extends ObservableClient
 	    if(E.getTask().equals("show user interest groups"))
 	    	((userMainMenuController)(currController)).handleDBResult((User)E.getObject());
 	         
+	    if(E.getTask().equals("search files"))
+	    	((userMainMenuController)(currController)).handleDBResultFile((ArrayList<file>)E.getObject());
+	         
 	        
 	}
 	if(message instanceof String ) //user name and password not found

@@ -1,5 +1,6 @@
 package Model;
 
+import java.awt.Component;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -127,12 +128,12 @@ public void setFilesInDB(ArrayList<file> filesInDB) {
 			this.status = status;
 		}
 
-	public ArrayList<interestGroups> getAllGroupInDB() {
-		return allGroupInDB;
-	}
-
 	public void setAllGroupInDB(ArrayList<interestGroups> allGroupInDB) {
 		this.allGroupInDB = allGroupInDB;
+	}
+
+	public ArrayList<interestGroups> getAllGroupInDB() {
+		return allGroupInDB;
 	}
 		
 

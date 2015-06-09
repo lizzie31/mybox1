@@ -79,7 +79,7 @@ public class EnterOrLeaveGroupGUI extends JFrame {
 		
 		JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.setBounds(215, 130, 131, 22);
-		
+		//int size = user.getAllGroupInDB().size();
 		if(user.getAllGroupInDB().size() > 0)
 		{
 			values=new String[user.getAllGroupInDB().size()];

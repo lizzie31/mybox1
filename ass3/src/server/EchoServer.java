@@ -86,7 +86,8 @@ public class EchoServer extends AbstractServer
 	  String str=msg.toString();
    try{
 	  Statement stmt = conn.createStatement();
-
+   if(msg instanceof Envelope)
+   {
 	 if((en.getTask()).equals("login"))  //search Login
 	  {
 		  logInMod showfiles=(logInMod)en.getObject();
@@ -177,7 +178,30 @@ public class EchoServer extends AbstractServer
     	 }
     	 user.setAllGroupInDB(allGroup);
     	 en=new Envelope(user,"show user interest groups");
+ 		 client.sendToClient(en);	 
+    }
+   }
+    
+    if(msg instanceof String)
+    {
+    	String str1=(String)msg;
+    	if(str1.equals("search files")){
+    	file f= null;
+    	String temp;
+    	ArrayList<file> files=new ArrayList<>();
+    	String re="select filename from test.files";
+    	 rs = stmt.executeQuery(re);
+    	 while(rs.next()==true)
+    	 {
+
+    		f=new file(rs.getString(2),rs.getString(3),rs.getString(4));
+    		files.add(f);
+    	
+    	 }
+    
+    	 en=new Envelope(files,"search files");
  		 client.sendToClient(en);
+    	}
     	 
     }
 	   

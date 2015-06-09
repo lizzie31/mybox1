@@ -41,4 +41,6 @@ public class file extends AbstractModel{
 	{
 	this.FileType=type;
     }
+    
 }
+
