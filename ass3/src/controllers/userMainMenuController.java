@@ -5,58 +5,44 @@ package controllers;
 
 
 import java.awt.CardLayout;
-
+import java.awt.Component;
 import java.awt.Container;
+
+
+
 
 
 
 import view.*;
 
-
-
 import java.awt.CardLayout;
-
 import java.awt.event.ActionEvent;
-
 import java.awt.event.ActionListener;
-
 import java.util.ArrayList;
 
-
-
+import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 
-
-
 import client.myboxapp;
-
 import Model.Envelope;
-
 import Model.User;
-
 import Model.file;
 
-
-
-
-
 public class userMainMenuController extends AbstractTransfer{
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected userMainMenuGUI CurrGui=null;
 	protected logInCon prevController;
 	protected User userDetails;
 	protected fileMenuGui fileMenu;
     protected fileMenuCon fileCon;
 	private Envelope en;
-
-
-
-	
-
-
+	private file f;
+	private file fileDetails;
 
 	public userMainMenuController(userMainMenuGUI menu, logInCon lastCon,User user) {
-
 		this.CurrGui= menu;
 		prevController=lastCon;
 		userDetails=user;
@@ -66,6 +52,7 @@ public class userMainMenuController extends AbstractTransfer{
 		CurrGui.addshowgruops(new ButtonshowgrouprListener());
 		CurrGui.addLogOut(new LogOutListener());
 		CurrGui.addlistClickedListener(new ListSelectionListener());
+		CurrGui.addsearchfiles(new addsearchfilesListener());
 	}
 
 	protected class ButtonshowgrouprListener implements ActionListener {
@@ -79,6 +66,33 @@ public class userMainMenuController extends AbstractTransfer{
 		sendToServer(en);
 		myboxapp.clien.setCurrObj(this);	
 	}
+	
+	protected class addsearchfilesListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			buttonsearchfilesPressed();
+		}	
+	}
+	protected void buttonsearchfilesPressed() {	
+		String str = CurrGui.getTextField();
+		if(str.equals(""))
+		{
+			Component frame = null;
+			JOptionPane.showMessageDialog(frame, "Please type the filename to search!");
+		}
+			
+		else
+		{
+			
+			//f = new Files(str);
+			//CurrGui.close();
+			//fileSearchGui CNFG=new fileSearchGui (f);
+			//new fileSearchController(CNFG,this);
+			en=new Envelope(fileDetails,"search files");
+			sendToServer(en);
+			myboxapp.clien.setCurrObj(this);
+		}
+			
+	}
 
 	 class LogOutListener implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
@@ -90,7 +104,6 @@ public class userMainMenuController extends AbstractTransfer{
 	 } 
 
 	 class ListSelectionListener implements javax.swing.event.ListSelectionListener{
-
 			public void valueChanged(ListSelectionEvent e) {
 				 String choosenFile=(String)CurrGui.getlist().getSelectedValue();
 				 fileMenu=new fileMenuGui(userDetails,choosenFile);
@@ -107,99 +120,55 @@ public class userMainMenuController extends AbstractTransfer{
 
 	private void buttoncreatenewfilePressed() {
 		CurrGui.close();
-
 		createNewFileGUI CNFG=new createNewFileGUI ();
-
 		new createNewFileController(CNFG,this);
-
 		CNFG.setVisible(true);
-
 	}
 
 	private class ButtoncreatenewfolderListener implements ActionListener {
 
-
-
-		@Override
-
 		public void actionPerformed(ActionEvent arg0) {
-
 			buttoncreatenewfolderPressed();
-
 		}
-
-		
-
 	}
 
 	private void buttoncreatenewfolderPressed() {
-
 		CurrGui.close();
-
 		createNewFolderGUI CNFOG=new createNewFolderGUI ();
-
 		new createNewFolderController(CNFOG,this);
-
 	    CNFOG.setVisible(true);
-
 	}
 
 	public userMainMenuGUI getusermainmenu() {
-
 		return CurrGui;
-
 	}
 
-	
 
 	private class ButtonAddleaveAGrouprListener implements ActionListener {
 
-
-
-		@Override
-
 		public void actionPerformed(ActionEvent arg0) {
-
 			buttonAddleaveAGroupPressed();
-
 		}
-
-		
-
 	}
 
 	
 
 	private void buttonAddleaveAGroupPressed() {
-
 		CurrGui.close();
-
 		EnterOrLeaveGroupGUI ALG=new EnterOrLeaveGroupGUI (userDetails);
-
 		new EnterOrLeaveGroupController(ALG,this);
-
 		ALG.setVisible(true);
-
 	}
-
-	
 
 	public void UpdateDB(){
 
-		//update the status of  current  user to 0 - logoff
-
 		en=new Envelope(userDetails,"log out status");
-
 		 sendToServer(en);
-
 		 userDetails.setStatus(0);
-
 	}
 
 	public User getUserDetails() {
-
 		return userDetails;
-
 	}
 
 	public void setUserDetails(User userDetails) {
@@ -213,24 +182,31 @@ public userMainMenuController getCon(){
 	
 
 	public void handleDBResult(Object message) {
-
 	userDetails = (User)message;
-
 	CurrGui.close();
-
 	this.setUserDetails((User)userDetails);
-
 	groupListGUI SG=new groupListGUI (userDetails);
-
 	new GroupsListController(SG,this);
-
 	SG.setVisible(true);
-
 	}
+	
+	public void handleDBResultFile(Object message) {
+		fileDetails = (file)message;
+		CurrGui.close();
+		this.setFileDetails((file)fileDetails);
+		fileSearchGui SG=new fileSearchGui ((file)fileDetails);
+		new fileSearchController(SG,this);
+		SG.setVisible(true);
+		}
+	
+private void setFileDetails(file fileDetails2) {
+		this.fileDetails = fileDetails2;
+		
+	}
+
 public logInCon getPrevController() {
 		return prevController;
 	}
 	
-
 }
 

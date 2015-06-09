@@ -177,6 +177,26 @@ public class EchoServer extends AbstractServer
     	 }
     	 user.setAllGroupInDB(allGroup);
     	 en=new Envelope(user,"show user interest groups");
+ 		 client.sendToClient(en);	 
+    }
+    
+    if(en.getTask().equals("search files"))
+    {
+    	file f= null;
+    	String temp;
+    	ArrayList<file> files=new ArrayList<>();
+    	String re="select filename from test.files";
+    	 rs = stmt.executeQuery(re);
+    	 while(rs.next()==true)
+    	 {
+    		temp = rs.getString(1);
+    		f=new file(temp);
+    		files.add(f);
+    	
+    	 }
+    
+    	 f.setFileArr(files);
+    	 en=new Envelope(f,"search files");
  		 client.sendToClient(en);
     	 
     }
